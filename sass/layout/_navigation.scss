@@ -1,0 +1,118 @@
+@use '../util' as u;
+
+header{
+    display: flex;
+    justify-content: space-between;
+    margin-inline: auto;
+    width: min(100% - u.rem(48), u.rem(1110));
+    padding: 1.25em 0;
+
+    .nav, .cart {
+        display: flex;
+        align-items: center;
+    }
+    
+    .avataar{
+        width: u.rem(23);
+        cursor: pointer;
+        margin-left: u.rem(40);
+        border: 2px black white;
+        border-radius: 50%;
+        &:hover{
+            outline: 2px var(--primary-orange) solid;
+
+
+        }
+    }
+
+    .nav{
+
+        &_menu, .close{
+            width:  u.rem(28);
+            height: fit-content;
+            @include u.breakpoint(lg){
+                display: none;
+            }
+        } 
+
+        .logo{
+           width: u.rem(138);
+           height: u.rem(26);
+           margin-left: u.rem(10);
+        }
+
+        &_bg{
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background-color: hsla(0, 0%, 0%, 0.581);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9;
+        }
+
+        &_box{
+            display: none;
+            z-index: 10;
+            
+            @include u.breakpoint-max(md){
+                background-color: var(--neutral-white);
+                position: absolute;
+                top: 0%;
+                left: 0%;
+                flex-direction: column;
+                height: 100vh;
+                width:  u.rem(250);
+                padding-top: u.rem(25);
+                padding-left: u.rem(25);
+            }
+
+            @include u.breakpoint(lg){
+                display: flex;
+                margin-left: u.rem(55);
+            }
+
+        }
+        
+
+        a{
+            font-weight: 700;
+            position: relative;
+            
+            @include u.breakpoint-max(md){
+                padding-top:u.rem(17) ;
+                padding-bottom:u.rem(17) ;
+            }
+
+            @include u.breakpoint(lg){
+                margin-left: u.rem(36);
+                &::after{
+                    content: "";
+                    position: absolute;
+                    width: 0%;
+                    height: 4px;
+                    top: 285%;
+                    left: 50%;
+                    background-color: var(--primary-orange);
+                    transform: translateX(-50%);
+                    transition: width 0.3s ease-in-out;
+                }
+                &:hover::after{
+                    width: 100%;
+                    transition: width 0.3s ease-in-out;
+                }
+            }
+
+        }
+
+        nav{
+            display: flex;
+
+            @include u.breakpoint-max(md){
+                flex-direction: column;
+                margin-top: u.rem(75);
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@use 'sass:math';
+
+@function rem($pixel) {
+    @if unitless($pixel) {
+        @return math.div($pixel , 16) + rem;
+    } @else {
+        @error "You are using unit, just don/'t use it."
+    }
+}
+
+
+@function em($pixel) {
+    @if unitless($pixel) {
+        @return math.div($pixel , 16) + em;
+    } @else {
+        @error "You are using unit, just don/'t use it."
+    }
+}
